@@ -7,7 +7,7 @@ pipeline {
 	}
 	environment {
 		CI_REGISTRY='https://index.docker.io/v1/'
-		CI_REGISTRY_USER=johnswe
+		CI_REGISTRY_USER='johnswe'
 	}
 	stages {
 		stage('Build & Push Image') {
