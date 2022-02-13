@@ -1,7 +1,9 @@
 pipeline {
 	agent {
-		docker { image 'gcr.io/kaniko-project/executor:debug' }
-		args '--entrypoint ""'
+		docker {
+			image 'gcr.io/kaniko-project/executor:debug'
+			args '--entrypoint ""'
+		}
 	}
 	environment {
 		CI_REGISTRY='https://index.docker.io/v1/'
