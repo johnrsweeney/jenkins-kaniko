@@ -12,7 +12,10 @@ pipeline {
 	stages {
 		stage('Build & Push Image') {
 			steps {
-				sh 'echo testing...'
+				sh '''
+					echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+					executor --context /workspace/ --destination johnswe/alpine:new --force
+				'''
 			}
 		}
 	}
