@@ -2,7 +2,7 @@ pipeline {
 	agent {
 		docker {
 			image 'gcr.io/kaniko-project/executor:debug'
-			args '--entrypoint "" --user root'
+			args '--entrypoint ""'
 		}
 	}
 	environment {
