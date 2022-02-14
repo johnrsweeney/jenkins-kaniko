@@ -2,7 +2,7 @@ pipeline {
 	agent {
 		docker {
 			image 'gcr.io/kaniko-project/executor:debug'
-			args '--entrypoint "" -v /tmp/workspace/Kaniko_builds_main/:/workspace/'
+			args '--entrypoint ""'
 		}
 	}
 	environment {
@@ -17,7 +17,7 @@ pipeline {
 					ls -l
 					ls -l /workspace/
 					echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > sudo /kaniko/.docker/config.json
-					executor --context /workspace/ --destination johnswe/alpine:new --force
+					executor --context . --destination johnswe/alpine:new --force
 				'''
 			}
 		}
