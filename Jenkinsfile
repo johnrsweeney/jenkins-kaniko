@@ -17,7 +17,7 @@ pipeline {
 					ls -l
 					ls -l /workspace/
 					echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > sudo /kaniko/.docker/config.json
-					executor --context ./ --dockerfile Dockerfile --destination johnswe/alpine:new --force
+					sudo executor --context ./ --destination johnswe/alpine:new --force
 				'''
 			}
 		}
